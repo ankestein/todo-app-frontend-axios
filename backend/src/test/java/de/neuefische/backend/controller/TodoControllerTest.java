@@ -37,13 +37,13 @@ class TodoControllerTest {
         //Given
         String baseUrl = "http://localhost:" + port + "/api/todo";
         todoDb.addTodo(new Todo("1", TodoStatus.OPEN, "open-todo"));
-        todoDb.addTodo(new Todo("2", TodoStatus.DOING, "doing-todo"));
+        todoDb.addTodo(new Todo("2", TodoStatus.IN_PROGRESS, "doing-todo"));
 
         //When
         ResponseEntity<Todo[]> response = restTemplate.getForEntity(baseUrl, Todo[].class);
 
         //Then
-        Todo[] expected = {new Todo("1", TodoStatus.OPEN, "open-todo"), new Todo("2", TodoStatus.DOING, "doing-todo")};
+        Todo[] expected = {new Todo("1", TodoStatus.OPEN, "open-todo"), new Todo("2", TodoStatus.IN_PROGRESS, "doing-todo")};
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertArrayEquals(expected, response.getBody());
     }
