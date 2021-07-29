@@ -1,7 +1,9 @@
+import BoardOverview from "./pages/BoardOverview";
+
 function App() {
   return (
     <div>
-      Hello Todo App :)
+      <BoardOverview/>
     </div>
   );
 }
