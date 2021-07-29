@@ -19,4 +19,13 @@ public class TodoDb {
     public void addTodo(Todo todo){
         todoList.add(todo);
     }
+
+    public Todo add(Todo todo) {
+        todoList.add(todo);
+        return todo;
+    }
+
+    public void clearAll() {
+        todoList.clear();
+    }
 }
