@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TodoService {
@@ -26,7 +27,20 @@ public class TodoService {
 
     public Todo createTodo(TodoDto todoDto) {
         String id = idService.getRandomId();
-        Todo todo = new Todo(id, todoDto.getStatus(),todoDto.getDescription());
+        Todo todo = new Todo(id, todoDto.getStatus(), todoDto.getDescription());
         return todoDb.add(todo);
+    }
+
+    public void deleteById(String id) {
+        Todo todo = todoDb.getTodoById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Todo with ID " + id + " does not exist"));
+        todoDb.remove(todo);
+    }
+
+    public Todo updateTodo(Todo updatedTodo) {
+        Todo todo = todoDb.getTodoById(updatedTodo.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Todo with ID " + updatedTodo.getId() + " does not exist"));
+        todoDb.remove(todo);
+        return todoDb.add(updatedTodo);
     }
 }

@@ -10,5 +10,4 @@ import lombok.NoArgsConstructor;
 public class TodoDto {
     private TodoStatus status;
     private String description;
-
 }

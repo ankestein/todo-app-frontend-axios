@@ -26,8 +26,18 @@ public class TodoController {
     }
 
     @PostMapping
-    public Todo createTodo(@RequestBody TodoDto todoDto){
+    public Todo createTodo(@RequestBody TodoDto todoDto) {
         return todoService.createTodo(todoDto);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteById(@PathVariable String id) {
+        todoService.deleteById(id);
+    }
+
+    @PutMapping("{id}")
+    public Todo updateTodo(@RequestBody Todo todo) {
+        return todoService.updateTodo(todo);
     }
 
 }
