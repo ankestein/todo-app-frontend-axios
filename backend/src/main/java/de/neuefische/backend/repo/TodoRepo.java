@@ -59,4 +59,8 @@ public class TodoRepo {
 
         todos.remove(foundTodo);
     }
+
+    public void clear() {
+        todos.clear();
+    }
 }

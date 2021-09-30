@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/api/todo")
 public class TodoController {
 
-    private TodoService todoService;
+    private final TodoService todoService;
 
     @Autowired
     public TodoController(TodoService todoService) {
