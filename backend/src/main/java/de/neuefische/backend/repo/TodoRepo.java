@@ -13,19 +13,13 @@ import java.util.NoSuchElementException;
 public class TodoRepo {
 
     private final List<Todo> todos = new ArrayList<>();
-    private final IdService idService;
 
-    @Autowired
-    public TodoRepo(IdService idService) {
-        this.idService = idService;
-    }
 
     public List<Todo> getTodos() {
         return todos;
     }
 
     public Todo addTodo(Todo todo) {
-        todo.setId(idService.generateId());
         todos.add(todo);
 
         return todo;
