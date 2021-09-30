@@ -1,24 +1,31 @@
 package de.neuefische.backend.repo;
 
 import de.neuefische.backend.model.Todo;
+import de.neuefische.backend.service.IdService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.UUID;
 
 @Repository
 public class TodoRepo {
 
-    private List<Todo> todos = new ArrayList<>();
+    private final List<Todo> todos = new ArrayList<>();
+    private final IdService idService;
+
+    @Autowired
+    public TodoRepo(IdService idService) {
+        this.idService = idService;
+    }
 
     public List<Todo> getTodos() {
         return todos;
     }
 
     public Todo addTodo(Todo todo) {
-        todo.setId(generateId());
+        todo.setId(idService.generateId());
         todos.add(todo);
 
         return todo;
@@ -45,10 +52,6 @@ public class TodoRepo {
         }
 
         throw new NoSuchElementException("Couldn't find element with id: " + id);
-    }
-
-    private String generateId() {
-        return UUID.randomUUID().toString();
     }
 
     public void deleteTodo(String id) {
