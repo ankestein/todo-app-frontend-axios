@@ -9,13 +9,13 @@ import java.util.NoSuchElementException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class TodoServiceTest {
 
     TodoRepo todoRepo = mock(TodoRepo.class);
-    TodoService todoService = new TodoService(todoRepo);
+    IdService idService = mock(IdService.class);
+    TodoService todoService = new TodoService(todoRepo, idService);
 
     @Test
     void testUpdateTodo() {
