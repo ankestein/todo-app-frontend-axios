@@ -1,10 +1,21 @@
 import styled from "styled-components/macro";
+import {useState} from "react";
 
-export default function NewTodo() {
+export default function NewTodo(props) {
+
+    const [description, setDescription] = useState("");
+
+    const handleClick = () => {
+        props.onAdd(description)
+        setDescription("")
+    }
+
     return (
         <FooterStyled>
-            <input/>
-            <button>Add</button>
+            <input
+                value={description}
+                onChange={event => setDescription(event.target.value)}/>
+            <button onClick={handleClick}>Add</button>
         </FooterStyled>
     )
 };
