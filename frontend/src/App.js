@@ -2,37 +2,18 @@ import Header from "./components/Header";
 import BoardsOverview from "./components/BoardsOverview";
 import NewTodo from "./components/NewTodo";
 import styled from "styled-components/macro";
+import {useEffect, useState} from "react";
+import {getTodos} from "./service/todo-api-service";
 
 function App() {
 
-    const todos = [
-        {
-            id: "1",
-            description: "learn react",
-            status: "IN_PROGRESS"
-        },
-        {
-            id: "2",
-            description: "sleep",
-            status: "OPEN"
-        },
-        {
-            id: "3",
-            description: "drink beer",
-            status: "DONE"
-        },
-        {
-            id: "4",
-            description: "chill",
-            status: "OPEN"
-        },
-        {
-            id: "5",
-            description: "drink another beer",
-            status: "IN_PROGRESS"
-        }
+    const [todos, setTodos] = useState([]);
 
-    ]
+    useEffect(() => {
+        getTodos()
+            .then(todos => setTodos(todos))
+    }, [])
+
     return (
         <PageLayout>
             <Header/>
