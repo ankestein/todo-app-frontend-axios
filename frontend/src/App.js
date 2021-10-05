@@ -3,7 +3,8 @@ import BoardsOverview from "./components/BoardsOverview";
 import NewTodo from "./components/NewTodo";
 import styled from "styled-components/macro";
 import {useEffect, useState} from "react";
-import {getTodos, postTodo} from "./service/todo-api-service";
+import {getTodos, postTodo, putTodo} from "./service/todo-api-service";
+import {getNextStatus} from "./service/todo-service";
 
 function App() {
 
@@ -14,6 +15,14 @@ function App() {
             .then(addedTodo => setTodos([...todos, addedTodo]))
     }
 
+    const advanceTodo = (todo) => {
+        const newStatus = getNextStatus(todo.status)
+        const advancedTodo = {...todo, status: newStatus}
+        putTodo(advancedTodo)
+            .then(updatedTodo =>
+                setTodos(todos.map(item => updatedTodo.id === item.id ? advancedTodo : item)))
+    }
+
     useEffect(() => {
         getTodos()
             .then(todos => setTodos(todos))
@@ -22,7 +31,9 @@ function App() {
     return (
         <PageLayout>
             <Header/>
-            <BoardsOverview todos={todos}/>
+            <BoardsOverview
+                todos={todos}
+                onAdvance={advanceTodo}/>
             <NewTodo onAdd={addTodo}/>
         </PageLayout>
     );

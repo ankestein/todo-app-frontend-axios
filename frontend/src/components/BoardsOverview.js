@@ -9,8 +9,8 @@ export default function BoardsOverview(props) {
 
     return (
         <Main>
-            <Board title="Open" todos={openTodos}/>
-            <Board title="In Progress" todos={inProgressTodos}/>
+            <Board title="Open" todos={openTodos} onAdvance={props.onAdvance}/>
+            <Board title="In Progress" todos={inProgressTodos} onAdvance={props.onAdvance}/>
             <Board title="Done" todos={doneTodos}/>
         </Main>
     )

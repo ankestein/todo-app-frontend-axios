@@ -1,5 +1,5 @@
 export const getTodos = () => {
-    return  fetch("/api/todo")
+    return fetch("/api/todo")
         .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -16,7 +16,7 @@ export const postTodo = (description) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({description, status: "OPEN"}),
-    })  .then(response => {
+    }).then(response => {
             if (response.ok) {
                 return response.json();
             }
@@ -24,4 +24,21 @@ export const postTodo = (description) => {
         }
     )
 }
+
+export const putTodo = (todo) => {
+    return fetch(`/api/todo/${todo.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(todo),
+    }).then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error("update todo failed")
+        }
+    )
+}
+
 

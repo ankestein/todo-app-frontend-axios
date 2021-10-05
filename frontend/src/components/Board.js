@@ -8,8 +8,11 @@ export default function Board(props) {
             <List>
                 {props.todos.map(todo => {
                     return (
-                        <li key={todo.id} >
-                            <TodoItem todo={todo}/>
+                        <li key={todo.id}>
+                            <TodoItem
+                                todo={todo}
+                                onAdvance={props.onAdvance}
+                            />
                         </li>
                     )
                 })}
