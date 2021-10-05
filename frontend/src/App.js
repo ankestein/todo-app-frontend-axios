@@ -3,7 +3,7 @@ import BoardsOverview from "./components/BoardsOverview";
 import NewTodo from "./components/NewTodo";
 import styled from "styled-components/macro";
 import {useEffect, useState} from "react";
-import {getTodos, postTodo, putTodo} from "./service/todo-api-service";
+import {deleteTodo, getTodos, postTodo, putTodo} from "./service/todo-api-service";
 import {getNextStatus} from "./service/todo-service";
 
 function App() {
@@ -23,6 +23,12 @@ function App() {
                 setTodos(todos.map(item => updatedTodo.id === item.id ? advancedTodo : item)))
     }
 
+    const removeTodo = (id) => {
+        deleteTodo(id)
+            .then(() => setTodos(todos.filter(todo => todo.id !== id)))
+    }
+
+
     useEffect(() => {
         getTodos()
             .then(todos => setTodos(todos))
@@ -33,7 +39,9 @@ function App() {
             <Header/>
             <BoardsOverview
                 todos={todos}
-                onAdvance={advanceTodo}/>
+                onAdvance={advanceTodo}
+                onDelete={removeTodo}
+            />
             <NewTodo onAdd={addTodo}/>
         </PageLayout>
     );

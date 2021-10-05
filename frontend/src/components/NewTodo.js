@@ -1,12 +1,12 @@
 import styled from "styled-components/macro";
 import {useState} from "react";
 
-export default function NewTodo(props) {
+export default function NewTodo({onAdd}) {
 
     const [description, setDescription] = useState("");
 
     const handleClick = () => {
-        props.onAdd(description)
+        onAdd(description)
         setDescription("")
     }
 

@@ -41,4 +41,10 @@ export const putTodo = (todo) => {
     )
 }
 
+export const deleteTodo = (id) => {
+    return fetch(`/api/todo/${id}`, {
+        method: 'DELETE',
+    })
+}
+
 

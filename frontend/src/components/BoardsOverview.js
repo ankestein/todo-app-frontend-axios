@@ -1,17 +1,24 @@
 import styled from "styled-components/macro";
 import Board from "./Board";
 
-export default function BoardsOverview(props) {
+export default function BoardsOverview({todos, onAdvance, onDelete}) {
 
-    const openTodos = props.todos.filter(todo => todo.status === "OPEN")
-    const inProgressTodos = props.todos.filter(todo => todo.status === "IN_PROGRESS")
-    const doneTodos = props.todos.filter(todo => todo.status === "DONE")
+    const openTodos = todos.filter(todo => todo.status === "OPEN")
+    const inProgressTodos = todos.filter(todo => todo.status === "IN_PROGRESS")
+    const doneTodos = todos.filter(todo => todo.status === "DONE")
 
     return (
         <Main>
-            <Board title="Open" todos={openTodos} onAdvance={props.onAdvance}/>
-            <Board title="In Progress" todos={inProgressTodos} onAdvance={props.onAdvance}/>
-            <Board title="Done" todos={doneTodos}/>
+            <Board title="Open"
+                   todos={openTodos}
+                   onAdvance={onAdvance}/>
+            <Board title="In Progress"
+                   todos={inProgressTodos}
+                   onAdvance={onAdvance}/>
+            <Board title="Done"
+                   todos={doneTodos}
+                   onDelete={onDelete}
+            />
         </Main>
     )
 }

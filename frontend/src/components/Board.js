@@ -1,17 +1,18 @@
 import styled from "styled-components/macro";
 import TodoItem from "./TodoItem";
 
-export default function Board(props) {
+export default function Board({title, todos, onAdvance, onDelete}) {
     return (
         <section>
-            <h2>{props.title}</h2>
+            <h2>{title}</h2>
             <List>
-                {props.todos.map(todo => {
+                {todos.map(todo => {
                     return (
                         <li key={todo.id}>
                             <TodoItem
                                 todo={todo}
-                                onAdvance={props.onAdvance}
+                                onAdvance={onAdvance}
+                                onDelete={onDelete}
                             />
                         </li>
                     )

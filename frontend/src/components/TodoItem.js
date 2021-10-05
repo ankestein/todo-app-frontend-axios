@@ -1,11 +1,13 @@
 import styled from "styled-components/macro";
 
-export default function TodoItem(props) {
+export default function TodoItem({todo, onAdvance, onDelete}) {
+
+
     return (
         <Wrapper>
-            <h3>{props.todo.description}</h3>
-            { props.onAdvance && <button onClick={() => props.onAdvance(props.todo)}>Advance</button> }
-            <button>Delete</button>
+            <h3>{todo.description}</h3>
+            {onAdvance && <button onClick={() => onAdvance(todo)}>Advance</button>}
+            {onDelete && <button onClick={() => onDelete(todo.id)}>Delete</button>}
         </Wrapper>
     )
 };
