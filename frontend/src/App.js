@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Navigation from "./components/Navigation";
 import BoardsPage from "./components/BoardsPage";
 import Homepage from "./components/Homepage";
+import DetailsPage from "./components/DetailsPage";
 
 
 function App() {
@@ -58,6 +59,10 @@ function App() {
                             onAdvance={advanceTodo}
                             onDelete={removeTodo}
                         />
+                    </Route>
+
+                    <Route path="/todo/:idSlug">
+                        <DetailsPage/>
                     </Route>
                 </Switch>
             </PageLayout>
