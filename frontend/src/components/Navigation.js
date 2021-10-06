@@ -13,14 +13,9 @@ export default function Navigation() {
 }
 
 const Wrapper = styled.div`
-/*display: grid;
-  grid-template-columns: repeat(4, 1fr);*/
-  grid-column-start: 1;
-  grid-column-end: 4;
+  width: 200px;
+  margin: 0 auto;
+  display: flex;
   justify-content: space-between;
-  
-  /*direction: ltr;*/
-  /*wrap: nowrap;*/
-
 `
 

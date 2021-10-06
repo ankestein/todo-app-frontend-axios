@@ -10,7 +10,7 @@ export default function BoardsOverview({todos, onAdvance, onDelete}) {
     const doneTodos = todos.filter(todo => todo.status === "DONE")
 
     return (
-        <Main>
+        <main>
             <Router>
                 <Navigation/>
                 <Switch>
@@ -33,6 +33,7 @@ export default function BoardsOverview({todos, onAdvance, onDelete}) {
                     </Route>
 
                     <Route path="/">
+                        <HomeBoard>
                         <Board title="Open"
                                todos={openTodos}
                                onAdvance={onAdvance}/>
@@ -42,14 +43,15 @@ export default function BoardsOverview({todos, onAdvance, onDelete}) {
                         <Board title="Done"
                                todos={doneTodos}
                                onDelete={onDelete}/>
+                        </HomeBoard>
                     </Route>
                 </Switch>
             </Router>
-        </Main>
+        </main>
     )
 }
 
-const Main = styled.div`
+const HomeBoard = styled.div`
   overflow-y: scroll;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

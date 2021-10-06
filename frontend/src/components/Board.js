@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 
 export default function Board({title, todos, onAdvance, onDelete}) {
     return (
-        <section>
+        <Wrapper>
             <h2>{title}</h2>
             <List>
                 {todos.map(todo => {
@@ -18,11 +18,16 @@ export default function Board({title, todos, onAdvance, onDelete}) {
                     )
                 })}
             </List>
-        </section>
+        </Wrapper>
     )
 };
 
 const List = styled.ul`
   list-style: none;
   padding: 0;
+`
+
+const Wrapper = styled.div`
+  width: 300px;
+  margin: 0 auto;
 `
