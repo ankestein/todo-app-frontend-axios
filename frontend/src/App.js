@@ -1,5 +1,4 @@
 import Header from "./components/Header";
-import NewTodo from "./components/NewTodo";
 import styled from "styled-components/macro";
 import {useEffect, useState} from "react";
 import {deleteTodo, getTodos, postTodo, putTodo} from "./service/todo-api-service";
@@ -53,30 +52,11 @@ function App() {
                         />
                     </Route>
 
-                    <Route path="/todos/open">
+                    <Route path="/todos/:statusSlug">
                         <BoardsPage
                             todos={todos}
                             onAdvance={advanceTodo}
                             onDelete={removeTodo}
-                            status="OPEN"
-                        />
-                    </Route>
-
-                    <Route path="/todos/doing">
-                        <BoardsPage
-                            todos={todos}
-                            onAdvance={advanceTodo}
-                            onDelete={removeTodo}
-                            status="IN_PROGRESS"
-                        />
-                    </Route>
-
-                    <Route path="/todos/done">
-                        <BoardsPage
-                            todos={todos}
-                            onAdvance={advanceTodo}
-                            onDelete={removeTodo}
-                            status="DONE"
                         />
                     </Route>
                 </Switch>
