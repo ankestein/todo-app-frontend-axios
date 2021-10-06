@@ -13,19 +13,19 @@ export default function BoardsOverview({todos, onAdvance, onDelete}) {
         <main>
             <Navigation/>
             <Switch>
-                <Route path="/open">
+                <Route path="/todos/open">
                     <Board title="Open"
                            todos={openTodos}
                            onAdvance={onAdvance}/>
                 </Route>
 
-                <Route path="/doing">
+                <Route path="/todos/doing">
                     <Board title="In Progress"
                            todos={inProgressTodos}
                            onAdvance={onAdvance}/>
                 </Route>
 
-                <Route path="/done">
+                <Route path="/todos/done">
                     <Board title="Done"
                            todos={doneTodos}
                            onDelete={onDelete}/>
