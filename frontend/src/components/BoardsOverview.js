@@ -1,7 +1,5 @@
 import styled from "styled-components/macro";
 import Board from "./Board";
-import Navigation from "./Navigation";
-import {Route, Switch} from "react-router-dom";
 
 export default function BoardsOverview({todos, onAdvance, onDelete}) {
 
@@ -10,47 +8,21 @@ export default function BoardsOverview({todos, onAdvance, onDelete}) {
     const doneTodos = todos.filter(todo => todo.status === "DONE")
 
     return (
-        <main>
-            <Navigation/>
-            <Switch>
-                <Route path="/todos/open">
-                    <Board title="Open"
-                           todos={openTodos}
-                           onAdvance={onAdvance}/>
-                </Route>
-
-                <Route path="/todos/doing">
-                    <Board title="In Progress"
-                           todos={inProgressTodos}
-                           onAdvance={onAdvance}/>
-                </Route>
-
-                <Route path="/todos/done">
-                    <Board title="Done"
-                           todos={doneTodos}
-                           onDelete={onDelete}/>
-                </Route>
-
-                <Route path="/">
-                    <HomeBoard>
-                        <Board title="Open"
-                               todos={openTodos}
-                               onAdvance={onAdvance}/>
-                        <Board title="In Progress"
-                               todos={inProgressTodos}
-                               onAdvance={onAdvance}/>
-                        <Board title="Done"
-                               todos={doneTodos}
-                               onDelete={onDelete}/>
-                    </HomeBoard>
-                </Route>
-            </Switch>
-
-        </main>
+        <Main>
+            <Board title="Open"
+                   todos={openTodos}
+                   onAdvance={onAdvance}/>
+            <Board title="In Progress"
+                   todos={inProgressTodos}
+                   onAdvance={onAdvance}/>
+            <Board title="Done"
+                   todos={doneTodos}
+                   onDelete={onDelete}/>
+        </Main>
     )
 }
 
-const HomeBoard = styled.div`
+const Main = styled.main`
   overflow-y: scroll;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
