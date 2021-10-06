@@ -4,7 +4,8 @@ import {useParams} from "react-router-dom";
 export default function BoardsPage({todos, onAdvance, onDelete}) {
 
     const {statusSlug} = useParams()
-    console.log(statusSlug)
+    /*const params = useParams()
+    console.log(params)*/
 
     const slugToStatus = {
         open: 'OPEN',
