@@ -5,6 +5,7 @@ import styled from "styled-components/macro";
 import {useEffect, useState} from "react";
 import {deleteTodo, getTodos, postTodo, putTodo} from "./service/todo-api-service";
 import {getNextStatus} from "./service/todo-service";
+import {BrowserRouter as Router} from "react-router-dom";
 
 function App() {
 
@@ -35,15 +36,17 @@ function App() {
     }, [])
 
     return (
-        <PageLayout>
-            <Header/>
-            <BoardsOverview
-                todos={todos}
-                onAdvance={advanceTodo}
-                onDelete={removeTodo}
-            />
-            <NewTodo onAdd={addTodo}/>
-        </PageLayout>
+        <Router>
+            <PageLayout>
+                <Header/>
+                <BoardsOverview
+                    todos={todos}
+                    onAdvance={advanceTodo}
+                    onDelete={removeTodo}
+                />
+                <NewTodo onAdd={addTodo}/>
+            </PageLayout>
+        </Router>
     );
 }
 
@@ -58,5 +61,6 @@ const PageLayout = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: min-content 1fr min-content;
+  font-family: sans-serif;
 
 `
