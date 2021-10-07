@@ -1,6 +1,11 @@
 import styled from "styled-components/macro";
 import useTodo from "../hooks/useTodo";
+import * as PropTypes from "prop-types";
 
+
+DetailsPage.propTypes = {
+   onDetails: PropTypes.func.isRequired,
+}
 export default function DetailsPage({onDetails}) {
 
  const {todo} = useTodo({onDetails});
