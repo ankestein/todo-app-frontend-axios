@@ -4,7 +4,12 @@ import * as PropTypes from "prop-types";
 
 
 BoardsPage.propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
+    /*todos: PropTypes.arrayOf(PropTypes.object).isRequired,*/
+    todos: PropTypes.arrayOf(PropTypes.exact({
+        id: PropTypes.string,
+        description: PropTypes.string,
+        status: PropTypes.string
+    })).isRequired,
     onAdvance: PropTypes.func,
     onDelete: PropTypes.func,
 }
