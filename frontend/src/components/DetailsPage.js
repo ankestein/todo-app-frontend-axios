@@ -17,14 +17,15 @@ export default function DetailsPage({onDetails}) {
 
     return(
         <Wrapper>
-            <h3>Task Details</h3>
-            <p>{todo.id}</p>
-            <p>{todo.description}</p>
-            <p>{todo.status}</p>
+            <h2>Task Details</h2>
+            <p>{`ID: ${todo.id}`}</p>
+            <p>{`Description: ${todo.description}`}</p>
+            <p>{`Status: ${todo.status}`}</p>
         </Wrapper>
     )
 }
 
 const Wrapper = styled.div`
-    
+    text-align: center;
+  margin: 20px 0 0 0 ;
 `
