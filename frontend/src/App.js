@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import BoardsPage from "./components/BoardsPage";
 import Homepage from "./components/Homepage";
 import DetailsPage from "./components/DetailsPage";
+import {getSingleTodo} from "./service/todo-api-service";
 
 
 function App() {
@@ -62,7 +63,8 @@ function App() {
                     </Route>
 
                     <Route path="/todo/:idSlug">
-                        <DetailsPage/>
+                        <DetailsPage
+                            onDetails={getSingleTodo}/>
                     </Route>
                 </Switch>
             </PageLayout>

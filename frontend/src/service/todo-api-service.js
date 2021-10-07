@@ -6,6 +6,12 @@ export const getTodos = () => {
         .then(response => response.data)
 }
 
+export const getSingleTodo = (idSlug) => {
+    return axios
+        .get(`/api/todo/${idSlug}`)
+        .then(response => response.data)
+}
+
 export const postTodo = (newDescription) => {
     const newTodo = {
         description: newDescription,
