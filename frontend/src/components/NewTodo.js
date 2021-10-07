@@ -11,22 +11,26 @@ export default function NewTodo({onAdd}) {
 
     const [description, setDescription] = useState("");
 
-    const handleClick = () => {
+    const handleClick = (event) => {
+        event.preventDefault()
+        if (!description) {
+            return
+        }
         onAdd(description)
         setDescription("")
     }
 
     return (
-        <FooterStyled>
+        <Form onSubmit={handleClick}>
             <input
                 value={description}
                 onChange={event => setDescription(event.target.value)}/>
-            <button onClick={handleClick}>Add</button>
-        </FooterStyled>
+            <button>Add</button>
+        </Form>
     )
 };
 
-const FooterStyled = styled.footer`
+const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr min-content;
   margin-bottom: 18px;
