@@ -1,18 +1,9 @@
-import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
 import styled from "styled-components/macro";
-
+import useTodo from "../hooks/useTodo";
 
 export default function DetailsPage({onDetails}) {
 
-    const [todo, setTodo] = useState({});
-    const {idSlug} = useParams()
-
-    useEffect(() => {
-        onDetails(idSlug)
-            .then(todo => setTodo(todo))
-            .catch(error => console.error(error))
-    }, [idSlug, onDetails])
+ const {todo} = useTodo({onDetails});
 
 
     return(
