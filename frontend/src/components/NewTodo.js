@@ -3,7 +3,6 @@ import {useState} from "react";
 import * as PropTypes from "prop-types";
 
 
-
 NewTodo.propTypes = {
     onAdd: PropTypes.func.isRequired,
 }

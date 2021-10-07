@@ -1,5 +1,19 @@
 import styled from "styled-components/macro";
 import {useHistory} from "react-router-dom";
+import * as PropTypes from "prop-types";
+
+
+TodoItem.propTypes = {
+    /*todo: PropTypes.object.isRequired,*/
+    todo: PropTypes.exact({
+        id: PropTypes.string,
+        description: PropTypes.string,
+        status: PropTypes.string
+    }).isRequired,
+    onAdvance: PropTypes.func,
+    onDelete: PropTypes.func,
+}
+
 
 export default function TodoItem({todo, onAdvance, onDelete}) {
 

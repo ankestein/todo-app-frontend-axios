@@ -3,10 +3,10 @@ import TodoItem from "./TodoItem";
 import * as PropTypes from "prop-types";
 
 
-
 Board.propTypes = {
-    title: PropTypes.string.isRequired,
-    todos: PropTypes.array.isRequired,
+    /*title: PropTypes.string.isRequired,*/
+    title: PropTypes.oneOf(['Open', 'In Progress', 'Done']).isRequired,
+    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
     onAdvance: PropTypes.func,
     onDelete: PropTypes.func,
 }

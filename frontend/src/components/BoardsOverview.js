@@ -2,8 +2,9 @@ import styled from "styled-components/macro";
 import Board from "./Board";
 import * as PropTypes from "prop-types";
 
+
 BoardsOverview.propTypes = {
-    todos: PropTypes.array.isRequired,
+    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
     onAdvance: PropTypes.func,
     onDelete: PropTypes.func,
 }

@@ -2,8 +2,9 @@ import BoardsOverview from "./BoardsOverview";
 import NewTodo from "./NewTodo";
 import * as PropTypes from "prop-types";
 
+
 Homepage.propTypes = {
-    todos: PropTypes.array.isRequired,
+    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
     onAdvance: PropTypes.func,
     onDelete: PropTypes.func,
     onAdd: PropTypes.func.isRequired,
