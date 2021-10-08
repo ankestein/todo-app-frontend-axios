@@ -1,12 +1,13 @@
 import styled from "styled-components/macro";
 import TodoItem from "./TodoItem";
 import * as PropTypes from "prop-types";
+import { todosProps } from '../service/todo-service';
 
 
 Board.propTypes = {
     /*title: PropTypes.string.isRequired,*/
     title: PropTypes.oneOf(['Open', 'In Progress', 'Done']).isRequired,
-    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
+    todos: PropTypes.arrayOf(todosProps).isRequired,
     onAdvance: PropTypes.func,
     onDelete: PropTypes.func,
 }

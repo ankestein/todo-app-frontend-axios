@@ -1,15 +1,11 @@
 import Board from "./Board";
 import {useParams} from "react-router-dom";
 import * as PropTypes from "prop-types";
+import { todosProps } from '../service/todo-service';
 
 
 BoardsPage.propTypes = {
-    /*todos: PropTypes.arrayOf(PropTypes.object).isRequired,*/
-    todos: PropTypes.arrayOf(PropTypes.exact({
-        id: PropTypes.string,
-        description: PropTypes.string,
-        status: PropTypes.string
-    })).isRequired,
+    todos: PropTypes.arrayOf(todosProps).isRequired,
     onAdvance: PropTypes.func,
     onDelete: PropTypes.func,
 }
