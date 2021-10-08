@@ -1,7 +1,7 @@
-import styled from "styled-components/macro";
-import TodoItem from "./TodoItem";
+import styled from 'styled-components/macro';
+import TodoItem from './TodoItem';
 
-export default function Board({title, todos, onAdvance, onDelete}) {
+export default function Board({ title, todos, onAdvance, onDelete }) {
     return (
         <section>
             <h2>{title}</h2>
@@ -15,14 +15,14 @@ export default function Board({title, todos, onAdvance, onDelete}) {
                                 onDelete={onDelete}
                             />
                         </li>
-                    )
+                    );
                 })}
             </List>
         </section>
-    )
-};
+    );
+}
 
 const List = styled.ul`
-  list-style: none;
-  padding: 0;
-`
+    list-style: none;
+    padding: 0;
+`;
